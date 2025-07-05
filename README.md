@@ -35,9 +35,14 @@ Choose a news category:
 Enter choice (1-11):
 
 
+
+
 🔧 Requirements
+
 Java 8 or above
+
 Internet connection
+
 
 
 📃 License
