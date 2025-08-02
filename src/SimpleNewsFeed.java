@@ -2,9 +2,11 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import java.nio.charset.StandardCharsets;
 
 public class SimpleNewsFeed {
     private static final String API_KEY = "pub_d7beb27dbab1438d88b188dabfdd025a"; 
@@ -55,12 +57,13 @@ public class SimpleNewsFeed {
             URL url = new URL(endpoint);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
+            
 
             int status = conn.getResponseCode();
             System.out.println("\nHTTP Response Code: " + status);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(
-                    (status >= 200 && status < 300) ? conn.getInputStream() : conn.getErrorStream()));
+                (status >= 200 && status < 300) ? conn.getInputStream() : conn.getErrorStream(), StandardCharsets.UTF_8));
 
             StringBuilder response = new StringBuilder();
             String inputLine;
